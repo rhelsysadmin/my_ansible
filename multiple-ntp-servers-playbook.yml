@@ -1,0 +1,15 @@
+---
+- name: Ensure that the inventory server have multiple servers as below
+  hosts: "{{ inventory }}"
+  vars:
+    timesync_ntp_servers:
+      - hostname: 0.pool.ntp.org
+        iburst: true
+      - hostname: 1.pool.ntp.org
+        iburst: true
+      - hostname: 2.pool.ntp.org
+        iburst: true
+      - hostname: 3.pool.ntp.org
+        iburst: true
+  roles:
+    - linux-system-roles.timesync
