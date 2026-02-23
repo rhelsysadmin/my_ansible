@@ -1,0 +1,9 @@
+---
+- name: Copy a file
+  hosts: all
+  copy:
+    src: chrony.conf
+    dest: /tmp/copy_of_chrony.conf
+    owner: lkliger
+    group: lkliger
+    mode: 0644

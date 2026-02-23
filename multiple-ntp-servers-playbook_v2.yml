@@ -1,7 +1,14 @@
 ---
 - name: Ensure that the inventory server have multiple servers as below
   hosts: all
+
+  pre_tasks:
+    - name: Bootstrap python3-dnf for Ansible compatibility
+      raw: dnf install -y python3-dnf
+      changed_when: false
+
   vars:
+    timesync_ntp_provider: chrony
     timesync_ntp_servers:
       - hostname: 0.pool.ntp.org
         iburst: true
